@@ -1,14 +1,19 @@
 # cts
 
-## Install (Docker)
+Requirements:
+* ISDESPOT requires `g++` 7.3 (newer should work too)
+* Nav a3c requires `python` 3.6 with `tensorflow` 1.8
+* HyLEAP requires both
 
-You do not have to install docker or container on Linux, because you should be able to compile and run the project on most distros.
+ℹ️ You do not have to install docker or container on Linux, because you should be able to compile and run the project on most distros.
+
+## Install (Docker)
 
 The install scripts:
 * Create `opends_data` volume
 * Create `opends` image
 * Create `opends_main` container
-* Clones this repo into `opends_data` volume, which is mounted to `/data` of `opends_main` container
+* Clone this repo into `opends_data` volume, which is mounted to `/data` of `opends_main` container
 
 ### Linux
 

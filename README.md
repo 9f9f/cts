@@ -1,3 +1,5 @@
+This is an updated part of FlorianPusse/OpenDS-CTS project.
+
 # cts
 
 Requirements:

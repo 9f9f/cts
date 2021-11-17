@@ -26,7 +26,11 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN groupadd -g 1000 god
 RUN useradd -u 1000 -ms /bin/bash -g god god
 
-USER god
+#RUN mkdir -m 777 /data
+#VOLUME /data
+#RUN chmod 777 /data
+
+#USER god
 #WORKDIR /home/god/
 
 RUN pip3 install --user --upgrade pip
@@ -39,7 +43,7 @@ ENV PATH="/data:${PATH}"
 # For Python/GA3C-DeepNavigationWithNavigation/Environment.py:47
 ENV my_system=docker
 
-RUN git clone https://github.com/9f9f/cts.git .
+#RUN git clone https://github.com/9f9f/cts.git .
 
 
 # COPY --chown=god:god /home/god/my/dkr/ISDESPOT /home/god/ISDESPOT

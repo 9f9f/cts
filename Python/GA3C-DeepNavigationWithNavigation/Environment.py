@@ -42,9 +42,15 @@ from Config import Config
 class connector:
 
     def __init__(self,id):
+        mykey = os.environ.get('my_system')
+        myhost = {None: "localhost", "docker": "host.docker.internal"}
+        myhost = myhost.get(mykey)
+        if myhost == None:
+            myhost = "127.0.0.1"
+        print("Config.AGENTS =", Config.AGENTS, "   myhost =", myhost)
         self.total = ""
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect(("localhost", 4000 + id + Config.AGENTS))
+        self.sock.connect((myhost, 4000 + id + Config.AGENTS))
         self.state = None
         self.lastAction = -1
 

@@ -1,4 +1,4 @@
-# compile- IS-DESPOT-p.sh
+#!/bin/bash
 
 START_DIR=$(dirname $0)
 cd START_DIR

@@ -1,6 +1,4 @@
-# compile- IS-DESPOT-p.sh
-
-#echo $0
+#!/bin/bash
 
 START_DIR=$(dirname $0)
 cd $START_DIR/ISDESPOT/smart-car-sim-master/is-despot && make

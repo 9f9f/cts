@@ -48,7 +48,7 @@ car_width = 1.7
 adapted_length = car_length * multiplyer
 adapted_width = car_width * multiplyer
 # costMapOriginal = plt.imread('../LearningAssets/map-v1-c-g.png')
-costMapOriginal = plt.imread('../LearningAssets/map-v1-c-c.png')
+costMapOriginal = plt.imread('./map-v1-c-c.png')
 # costMapOriginal = plt.imread('../LearningAssets/map-v1-c.png')
 # costMapOriginal = plt.imread('../LearningAssets/combinedmapSimple.png')
 costMapRescaled = skimage.transform.rescale(costMapOriginal, factor, multichannel=True, anti_aliasing=True,
@@ -335,6 +335,12 @@ class train_connector(threading.Thread):
         self.initialized = False
 
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+        hostname = socket.gethostname()
+        ipaddress = socket.gethostbyname(hostname)
+
+        print("Host name is:  ", hostname)
+        print("IP address is: ", ipaddress)
 
         try:
             self.sock.bind((HOST, PORT))

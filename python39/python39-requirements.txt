@@ -1,0 +1,20 @@
+# NavA3C-p
+# python 3.9
+
+numpy
+scipy
+matplotlib
+ipython
+jupyter
+pandas
+sympy
+nose 
+scikit-image
+
+tf_slim
+
+# numpy scipy matplotlib ipython jupyter pandas sympy nose scikit-image
+
+tensorflow==2.4.1
+# tensorflow-gpu==2.4
+

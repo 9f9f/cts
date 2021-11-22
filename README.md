@@ -58,6 +58,21 @@ Run `run-hyleap-0-py.sh`
 
 Run `run-hyleap-1-c.sh [port [host-ip]]`
 
+## Troubleshooting
 
+AbstractController defines:
+* OpenDS port = 5000
+* python port = 5001
 
+ISDESPOT (car) connects to PYTHON_PORT  of AbstractController
 
+nava3c (Environment.py) listens on port `4000 + id + Config.AGENTS`
+
+DiscretizedController...
+
+HyLEAP-py listens on port 1246
+OpenDS listens on port 1245 ?
+
+HyLEAP-car connects to
+* HyLEAP-py on port 1246
+* AbstractController on port 5001

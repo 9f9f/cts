@@ -341,6 +341,12 @@ class train_connector(threading.Thread):
 
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+        hostname = socket.gethostname()
+        ipaddress = socket.gethostbyname(hostname)
+
+        print("Host name is:  ", hostname)
+        print("IP address is: ", ipaddress)
+        
         try:
             self.sock.bind((HOST, PORT))
         except socket.error as msg:
@@ -732,8 +738,12 @@ train_connection = train_connector()
 image_connection = image_connector()
 
 tf.compat.v1.reset_default_graph()
+
+tf.compat.v1.disable_eager_execution()
+
 # cell = tf.contrib.rnn.LSTMCell(num_units=history_size // 2, state_is_tuple=True)
-cell = tf.contrib.rnn.LSTMBlockCell(num_units=history_size // 2)
+# cell = tf.contrib.rnn.LSTMBlockCell(num_units=history_size // 2)
+cell = tf.compat.v1.nn.rnn_cell.LSTMCell(num_units=history_size // 2, state_is_tuple=True)
 network = InitNetwork(cell, 'main')
 
 saver = tf.compat.v1.train.Saver(max_to_keep=30)

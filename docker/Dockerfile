@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y \
     make \
     python3.6 \
     python3-pip \
+    nano \
+    screen \
     git
 
 # Clear cache
@@ -32,6 +34,8 @@ RUN useradd -u 1000 -ms /bin/bash -g god god
 
 #USER god
 #WORKDIR /home/god/
+
+RUN echo "shell bash" >~/.screenrc
 
 RUN pip3 install --user --upgrade pip
 RUN pip3 install --user numpy scipy matplotlib ipython jupyter pandas sympy nose scikit-image tensorflow==1.8

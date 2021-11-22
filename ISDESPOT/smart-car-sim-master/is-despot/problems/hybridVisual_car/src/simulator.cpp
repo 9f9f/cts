@@ -350,11 +350,27 @@ public:
 };
 
 int main(int argc, char** argv) {
-    int port = 1245;
+    cout << "defaults: car opends_port=1245 opends_host python_port=1246 python_host";
+    cout << "e.g.      car 1245 127.0.0.1 1246 127.0.0.1";
+
+    int opends_port = 1245;
     int python_port = 1246;
 
+    char* opends_host = "127.0.0.1";
+    char* python_host = "127.0.0.1";
+
+
 	if (argc >= 2){
-        port = atoi(argv[1]);
+        opends_port = atoi(argv[1]);
+	}
+	if (argc >= 3){
+        opends_host = argv[2];
+	}
+	if (argc >= 4){
+        python_port = atoi(argv[3]);
+	}
+	if (argc >= 5){
+        python_host = argv[4];
 	}
 
     Globals::config.max_policy_sim_len = 40;
@@ -375,7 +391,7 @@ int main(int argc, char** argv) {
     cout << "Connect to server ...\n";
 
     connector conn;
-    conn.establish_connection(port);
+    conn.establish_connection(opends_host, opends_port);
     conn.sendMessage("RESET\n");
 
     cout << "Connect to python server ...";
@@ -390,7 +406,7 @@ int main(int argc, char** argv) {
 
     cout << "Connect to train server ...";
     connector train_connector;
-    train_connector.establish_connection(python_port);
+    train_connector.establish_connection(python_host, python_port);
     cout << "done\n";
 
     cout << "Connect to image server ...";
